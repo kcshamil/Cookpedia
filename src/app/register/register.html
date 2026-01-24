@@ -1,1 +1,56 @@
-<p>register works!</p>
+<div>
+ <div
+  class="container-fluid min-vh-100 d-flex align-items-center"
+  style="background-image:url('https://static.vecteezy.com/system/resources/thumbnails/033/027/755/small_2x/flat-lay-vegetables-on-white-background-food-and-diet-concept-ai-generated-free-photo.jpg'); background-size:cover; background-position:right center; background-repeat:no-repeat;"
+>
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- LEFT REGISTER CARD -->
+      <form [formGroup]="registerForm" (ngSubmit)="register()" class="col-12 col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+        <div class="card shadow border-0 p-4" style="max-width:420px; width:100%;">
+          <div class="text-center mb-3">
+            <h4 class="fw-bold">
+              <i class="fa-solid fa-graduation-cap me-2"></i>Cookpedia
+            </h4>
+          </div>
+
+          <input name="username" formControlName="username" class="form-control mb-3 py-2" placeholder="Username">
+          @if (registerForm.get('username')?.errors && registerForm.get('username')?.touched){
+            <div class="mb-3 text-danger fw-bold">*Invalid Username</div>
+          }
+          
+          <input name="email" formControlName="email" class="form-control mb-3 py-2" placeholder="E Mail">
+          @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+            <div class="mb-3 text-danger fw-bold">*Invalid Email</div>
+          }
+          <input name="password" formControlName="password" type="password" class="form-control mb-3 py-2" placeholder="Password">
+          @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+            <div class="mb-3 text-danger fw-bold">*Invalid Password</div>
+          }
+
+          <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">
+            register
+          </button>
+        </div>
+      </form>
+
+      <!-- RIGHT CONTENT -->
+      <div class="col-12 col-md-6">
+        <h2 class="fw-bold mb-2">Create New Account</h2>
+        <p class="fw-semibold mb-3">What you will get?</p>
+
+        <ul class="list-unstyled">
+          <li class="mb-2">• Different Recipes</li>
+          <li class="mb-2">• Easy way to Make Recipe</li>
+          <li class="mb-2">• Save your Favorite Recipes</li>
+          <li class="mb-2">• Download your Recipes</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+<app-footer></app-footer>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { ViewRecipe } from '../view-recipe/view-recipe';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +14,26 @@ export class ApiService {
   getAllRecipeAPI(){
     return this.http.get(`${this.server_url}/recipes`)
   }
-  
+
+  // register : called by register component
+  registerAPI(user:any){
+    return this.http.post(`${this.server_url}/register`,user)
+  }
+
+  // login : called by login component
+  loginAPI(user:any){
+    return this.http.post(`${this.server_url}/login`,user)
+  }
+
+  // view Recipe : view component when page open
+  viewRecipeAPI(recipeId:string){
+    return this.http.get(`${this.server_url}/recipes/${recipeId}`)
+  }
+
+  // related-recipe?cuisine=italian
+  getRelatedRecipesAPI(cuisine:string){
+    return this.http.get(`${this.server_url}/related-recipes?cuisine=${cuisine}`)
+  }
 }
+
+ 

@@ -1,1 +1,71 @@
-<p>view-recipe works!</p>
+<app-header></app-header>
+<div class="container my-5">
+    <div class="row ">
+        <div class="col-lg-6">
+            <a routerLink="/recipes">Back to Recipe List</a>
+            <br>
+            <img class="w-100 my-3" [src]="recipe().image" alt="">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-success">Download Recipe</button>
+                <button class="btn btn-primary">Save Recipe</button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1>{{recipe().name}}</h1>
+            <div class="row my-5">
+                <div class="col-lg-4">
+                    <h5>Cuisine : <span class="text-danger">{{recipe().cuisine}}</span></h5>
+                </div>
+                 <div class="col-lg-4">
+                    <h5>Servings : <span class="text-success">{{recipe().servings}}</span></h5>
+                </div>
+                 <div class="col-lg-4">
+                    <h5>Mode of Cooking : <span class="text-primary">{{recipe().difficulty}}</span></h5>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column text-center my-4">
+                        <div ><i class="fa-regular fa-clock fs-1"></i></div>
+                        <h6 class="my-3">Preparation Time :</h6> <span class="text-primary">
+                        
+                        {{recipe().prepTimeMinutes}} Minutes</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column text-center">
+                        <div><img width="80px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjL4NXh7bJsBpXVGZ31pQ_nQRUmKeGT7C8zQ&s" alt=""></div>
+                        <h6 >Cooking Time :</h6> <span class="text-primary">
+                        
+                        {{recipe().cookTimeMinutes}} Minutes</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column text-center my-4">
+                         <div><i class="fa-solid fa-utensils fs-1"></i></div>
+                        <h6 class="my-3">Calorie Per Servings :</h6> <span class="text-primary">
+                        
+                        {{recipe().caloriesPerServing}} Minutes</span>
+                    </div>
+                </div>
+                </div>
+                <h2>Ingredients Needed</h2>
+                <ol>
+                    @for (item of recipe().ingredients; track $index) {
+                        <li>{{item}}</li>
+                    }
+                </ol>
+                <h2>Cooking Instructions</h2>
+                <ol>
+                    @for (item of recipe().instructions; track $index) {
+                        <li>{{item}}</li>
+                    }
+                </ol>
+                
+    </div>
+</div>
+<div class="mb-5">
+    Related Recipes
+    <div class="row my-3">
+        
+    </div>
+</div>
+<app-footer> </app-footer>
