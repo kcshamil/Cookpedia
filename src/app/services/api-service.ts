@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ViewRecipe } from '../view-recipe/view-recipe';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,15 @@ import { ViewRecipe } from '../view-recipe/view-recipe';
 export class ApiService {
   server_url = "http://localhost:3000"
   http = inject(HttpClient)
+
+  appendToken(){
+    const token = sessionStorage.getItem("token")
+    let headers = new HttpHeaders()
+    if(token){
+      headers = headers.append("Authorization",`Bearer ${token}`)
+    }
+    return {headers}
+  }
 
   // api function -
   // 1. get all recipes - called by home & recipes component
@@ -33,6 +43,11 @@ export class ApiService {
   // related-recipe?cuisine=italian
   getRelatedRecipesAPI(cuisine:string){
     return this.http.get(`${this.server_url}/related-recipes?cuisine=${cuisine}`)
+  }
+
+  // downloads/:id api
+  addToDownloadAPI(recipeId:string,reqBody:any){
+    return this.http.post(`${this.server_url}/downloads/${recipeId}`,reqBody,this.appendToken())
   }
 }
 
