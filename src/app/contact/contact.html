@@ -1,1 +1,72 @@
-<p>contact works!</p>
+<app-header></app-header>
+<div class="conatiner my-5">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-4">
+            <div class="d-flex align-items-center justify-content-center flex-column">
+                <h1 class="fw-bold">Get In Touch</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam vel maiores blanditiis voluptas, officia dolorum exercitationem asperiores iste mollitia expedita nihil suscipit architecto dolor facilis doloribus. Autem officia explicabo doloremque</p>
+                <div class="d-flex align-items-center justify-content-center ms-4">
+                    <i class="fa-solid fa-location m-3 fs-4"></i>
+                    <div>
+                        <p class="fw-bold">Address</p>
+                        <p class="fst-italic">NYC 4567, PO Berlin.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-phone m-3 fs-4"></i>
+                    <div>
+                        <p class="fw-bold">Phone Number</p>
+                        <p class="fst-italic">9087646321</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-envelope m-3 fs-4"></i>
+                    <div>
+                        <p class="fw-bold">E Mail</p>
+                        <p class="fst-italic">email@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h1 class="fw-bold text-center">Follow Us</h1>
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="fa-brands fa-facebook-f mx-3 fs-3"></i>
+                <i class="fa-brands fa-instagram mx-3 fs-3"></i>
+                <i class="fa-brands fa-twitter mx-3 fs-3"></i>
+                <i class="fa-brands fa-youtube mx-3 fs-3"></i>
+            </div>
+        </div>
+
+        <div class="col-lg-4 align-items-center justify-content-center d-flex ms-5">
+            <form #feedbackForm="ngForm" (ngSubmit)="addFeedback()" class="border rounded shadow m-3 p-5">
+                <h3>Client Testimony</h3>
+                <div class="mb-3 mt-5">
+                    <input #username="ngModel" name="username"[(ngModel)]="name" type="text" placeholder="Name" class="form-control" required pattern="[a-zA-Z ]*">
+                </div>
+                @if (username.invalid && username.touched) {
+                    <div class="mb-3 text-danger">*Invalid Name</div>
+                }
+                <div class="mb-3">
+                    <input #mail="ngModel" name="email"[(ngModel)]="email" type="text" placeholder="E mail" class="form-control" email required>
+                </div>
+                 @if (mail.invalid && mail.touched) {
+                    <div class="mb-3 text-danger fw-bolder">*Invalid Name</div>
+                }
+                <div class="mb-3">
+                    <textarea #umessage="ngModel" name="message"[(ngModel)]="message" type="text" placeholder="Message" class="form-control" required></textarea>
+                </div>
+                 @if (umessage.invalid && umessage.touched) {
+                    <div class="mb-3 text-danger f">*Invalid Name</div>
+                }
+                <p>By submitting, your agreeing the terms and condition of our website. We may use your details in our site</p>
+                <div style="display: flex; justify-content: end;">
+                    <button [disabled]="feedbackForm.invalid" type="submit" class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </form> 
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -49,6 +49,31 @@ export class ApiService {
   addToDownloadAPI(recipeId:string,reqBody:any){
     return this.http.post(`${this.server_url}/downloads/${recipeId}`,reqBody,this.appendToken())
   }
+
+   // http://localhost:3000/recipes/696dca8bbe2d26c619adffdf/save : post - called view recipe complnen when save recipe btn clicked
+  addToSaveRecipeAPI(recipeId:string,reqBody:any){
+    return this.http.post(`${this.server_url}/recipes/${recipeId}/save`,reqBody,this.appendToken())
+  }
+
+     // http://localhost:3000/recipe-collection : get rqst from user collection component  when page load
+  getUserSaveRecipesAPI(){
+    return this.http.get(`${this.server_url}/recipe-collection`,this.appendToken())
+  }
+  // http://localhost:3000/recipe-collection/id : delete from save recipe component when delete btn clicked
+   removeUserSaveRecipeItemAPI(recipeId:string){
+    return this.http.delete(`${this.server_url}/recipe-collection/${recipeId}`,this.appendToken())
+  }
+
+  addFeedbackAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/feedback`,reqBody)
+  }
+
+  // :get by user profile when page loads
+  getUserDownloadListAPI(){
+    return this.http.get(`${this.server_url}/user-downloads`,this.appendToken())
+  }
+
+
 }
 
  
